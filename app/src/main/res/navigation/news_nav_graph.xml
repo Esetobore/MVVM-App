@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/news_nav_graph"
+    app:startDestination="@id/newsFragment">
+
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.mvvmapp.ui.fragments.NewsFragment"
+        android:label="NewsFragment" >
+        <action
+            android:id="@+id/action_newsFragment_to_newsWebView"
+            app:destination="@id/newsWebView"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/diagnosisFragment"
+        android:name="com.example.mvvmapp.ui.fragments.DiagnosisFragment"
+        android:label="DiagnosisFragment" />
+    <fragment
+        android:id="@+id/doctorsFragment"
+        android:name="com.example.mvvmapp.ui.fragments.DoctorsFragment"
+        android:label="DoctorsFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.mvvmapp.ui.fragments.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/newsWebView"
+        android:name="com.example.mvvmapp.ui.fragments.NewsWebView"
+        android:label="NewsWebView" />
+</navigation>
