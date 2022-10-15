@@ -1,6 +1,5 @@
 package com.example.mvvmapp.ui.adapter
 
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +33,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     }
 
     //Async list Differ
-    val differ = AsyncListDiffer(this,differCallback)
+    val diff = AsyncListDiffer(this,differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         return ArticleViewHolder(
@@ -47,7 +46,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-       val article = differ.currentList[position]
+       val article = diff.currentList[position]
                holder.itemView.apply {
                    Glide.with(this).load(article.urlToImage).into(holder.articleImage)
                    holder.source.text = article.source.name
@@ -60,12 +59,12 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         }
     }
     override fun getItemCount(): Int {
-        return differ.currentList.size
+        return diff.currentList.size
     }
     // for the webView of the application onclickListener
     private var onItemClickListener : ((Article) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (Article) -> Unit){
+     fun setOnItemClickListener(listener: (Article) -> Unit){
         onItemClickListener = listener
     }
 }
