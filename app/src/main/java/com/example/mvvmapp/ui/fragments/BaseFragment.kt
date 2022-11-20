@@ -1,11 +1,19 @@
 package com.example.mvvmapp.ui.fragments
 
+import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
-import com.example.mvvmapp.ui.ui.NewsViewModule
+import com.example.mvvmapp.ui.uimodel.NewsViewModel
+import kotlinx.android.synthetic.main.fragment_news.*
 
 abstract class BaseFragment : Fragment() {
-    lateinit var viewModel: NewsViewModule
+    fun hideProgressBar(){
+        paginationProgressBar.visibility = View.INVISIBLE
+    }
+    fun showProgressBar(){
+        paginationProgressBar.visibility = View.VISIBLE
+    }
+
+    lateinit var viewModel: NewsViewModel
 
 
 }

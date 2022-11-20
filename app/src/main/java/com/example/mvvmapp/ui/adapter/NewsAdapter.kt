@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.mvvmapp.R
 import com.example.mvvmapp.ui.Article
 
-// working on recyclerViews with diffUtil
+
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     inner class ArticleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val articleImage : ImageView = itemView.findViewById(R.id.ivArticleImage)
