@@ -5,24 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <SearchView
-        android:id="@+id/etSearch"
-        android:layout_width="match_parent"
+<!--    <EditText-->
+<!--        android:id="@+id/etSearch"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:queryHint="search....."-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/search_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:queryHint="search....."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginStart="352dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCurrentNews"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingBottom="50dp"
         android:clipToPadding="false"
+        android:paddingBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSearch"
+        app:layout_constraintTop_toBottomOf="@+id/search_btn"
         tools:layout_editor_absoluteX="0dp" />
 
     <ProgressBar

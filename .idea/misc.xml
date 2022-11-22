@@ -12,11 +12,12 @@
         <entry key="..\:/Users/Esetobore/AndroidStudioProjects/MVVMApp/app/src/main/res/layout/fragment_current_news.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Esetobore/AndroidStudioProjects/MVVMApp/app/src/main/res/layout/fragment_diagnosis.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Esetobore/AndroidStudioProjects/MVVMApp/app/src/main/res/layout/fragment_doctors.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Esetobore/AndroidStudioProjects/MVVMApp/app/src/main/res/layout/fragment_news.xml" value="0.203125" />
+        <entry key="..\:/Users/Esetobore/AndroidStudioProjects/MVVMApp/app/src/main/res/layout/fragment_news.xml" value="0.33" />
         <entry key="..\:/Users/Esetobore/AndroidStudioProjects/MVVMApp/app/src/main/res/layout/fragment_news_web_view.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Esetobore/AndroidStudioProjects/MVVMApp/app/src/main/res/layout/fragment_profile.xml" value="0.203125" />
         <entry key="..\:/Users/Esetobore/AndroidStudioProjects/MVVMApp/app/src/main/res/layout/item_article_preview.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Esetobore/AndroidStudioProjects/MVVMApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Esetobore/AndroidStudioProjects/MVVMApp/app/src/main/res/menu/search.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Esetobore/AndroidStudioProjects/MVVMApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1155" />
       </map>
     </option>

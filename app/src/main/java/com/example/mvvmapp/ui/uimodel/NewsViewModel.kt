@@ -22,11 +22,17 @@ class NewsViewModel(val newsRepository : NewsRepository, app: Application): Andr
 
     val newsModel: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     val newsPage = 1
+
+    val searchNewsModel: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
+    val searchNewsPage = 1
     init {
         getNews(countryCode = "us")
     }
     fun getNews(countryCode: String) = viewModelScope.launch {
         getNewCall(countryCode)
+    }
+    fun getSearchNews(query: String) = viewModelScope.launch {
+        getSearchNewCall(query)
     }
     suspend fun getNewCall(countryCode: String){
         try {
@@ -44,8 +50,32 @@ class NewsViewModel(val newsRepository : NewsRepository, app: Application): Andr
             }
         }
     }
+    suspend fun getSearchNewCall(query: String){
+        try {
+            if(checkInternetConnection()){
+                val response = newsRepository.searchNews(query, searchNewsPage)
+                searchNewsModel.postValue(Resource.Loading())
+                searchNewsModel.postValue(handleSearchNewsResponse(response))
+            }else{
+                searchNewsModel.postValue(Resource.Error("No internet Connection"))
+            }
+        }catch (t:Throwable){
+            when(t){
+                is IOException -> searchNewsModel.postValue(Resource.Error("Network Failure"))
+                else -> searchNewsModel.postValue(Resource.Error("Json Conversion Error"))
+            }
+        }
+    }
 
     private fun handleNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse>{
+        if(response.isSuccessful){
+            response.body()?.let {
+                return Resource.Success(it)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+    private fun handleSearchNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse>{
         if(response.isSuccessful){
             response.body()?.let {
                 return Resource.Success(it)
