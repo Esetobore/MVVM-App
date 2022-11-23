@@ -1,10 +1,13 @@
 package com.example.mvvmapp.ui.fragments
 
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.view.*
+import android.widget.SearchView
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmapp.R
 import com.example.mvvmapp.ui.MainActivity
@@ -30,6 +33,15 @@ class NewsFragment: BaseFragment() {
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
 
+        newsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("news",it)
+            }
+            findNavController().navigate(
+                R.id.action_newsFragment_to_newsWebView
+                ,bundle
+            )
+        }
        var job: Job? = null
         etSearch.addTextChangedListener { editable->
             job?.cancel()
@@ -90,5 +102,5 @@ class NewsFragment: BaseFragment() {
 
         }
     }
-
 }
+

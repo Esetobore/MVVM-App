@@ -1,5 +1,10 @@
 package com.example.mvvmapp.ui
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
+
 data class Article(
     val author: String,
     val content: String,
@@ -9,4 +14,4 @@ data class Article(
     val title: String,
     val url: String,
     val urlToImage: String
-)
+): Serializable

@@ -32,5 +32,9 @@
     <fragment
         android:id="@+id/newsWebView"
         android:name="com.example.mvvmapp.ui.fragments.NewsWebView"
-        android:label="NewsWebView" />
+        android:label="NewsWebView" >
+        <argument
+            android:name="news"
+            app:argType="com.example.mvvmapp.ui.Article" />
+    </fragment>
 </navigation>
