@@ -30,18 +30,18 @@ class NewsFragment: BaseFragment() {
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
 
-//        var job: Job? = null
-//        etSearch.addTextChangedListener { editable->
-//            job?.cancel()
-//            job = MainScope().launch {
-//                delay(SEARCH_VIEW_DELAY)
-//                editable.let {
-//                    if (editable.toString().isEmpty()){
-//                        viewModel.searchNewsModel(editable.toString())
-//                    }
-//                }
-//            }
-//        }
+       var job: Job? = null
+        etSearch.addTextChangedListener { editable->
+            job?.cancel()
+            job = MainScope().launch {
+                delay(SEARCH_VIEW_DELAY)
+                editable.let {
+                    if (editable.toString().isEmpty()){
+                        viewModel.getSearchNews(editable.toString())
+                    }
+                }
+            }
+        }
         // handling response and updating information in our recycler view from the viewModel live data
         viewModel.newsModel.observe(viewLifecycleOwner, Observer { newsresponse ->
             when(newsresponse){
@@ -90,13 +90,5 @@ class NewsFragment: BaseFragment() {
 
         }
     }
-//    private fun setupASearchRecyclerView(){
-//        newsAdapter = NewsAdapter()
-//        rvCurrentNews.apply {
-//            adapter = newsAdapter
-//            layoutManager = LinearLayoutManager(activity)
-//
-//        }
-//    }
 
 }
