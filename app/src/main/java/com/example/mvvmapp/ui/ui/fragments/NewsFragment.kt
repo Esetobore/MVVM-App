@@ -1,10 +1,8 @@
-package com.example.mvvmapp.ui.fragments
+package com.example.mvvmapp.ui.ui.fragments
 
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.*
-import android.widget.SearchView
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController

@@ -1,4 +1,4 @@
-package com.example.mvvmapp.ui.fragments
+package com.example.mvvmapp.ui.ui.fragments
 
 import android.view.View
 import androidx.fragment.app.Fragment

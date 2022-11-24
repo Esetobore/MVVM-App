@@ -1,4 +1,4 @@
-package com.example.mvvmapp.ui.fragments
+package com.example.mvvmapp.ui.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ class NewsWebView: BaseFragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_news_web_view, container, false)
     }
-    private val args: NewsWebViewArgs by navArgs()
+    private val args: com.example.mvvmapp.ui.ui.fragments.NewsWebViewArgs by navArgs()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel

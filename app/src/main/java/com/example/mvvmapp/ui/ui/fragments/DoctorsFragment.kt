@@ -1,7 +1,6 @@
-package com.example.mvvmapp.ui.fragments
+package com.example.mvvmapp.ui.ui.fragments
 
 import androidx.fragment.app.Fragment
-import com.example.mvvmapp.R
 
 class DoctorsFragment: Fragment() {
 
