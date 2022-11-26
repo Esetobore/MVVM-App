@@ -149,26 +149,28 @@
             android:text="Profile Image" />
 
         <Button
-            android:id="@+id/Login_btn"
+            android:id="@+id/register_btn"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_btn"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/black"
-            android:text="Login" />
+            android:text="Register" />
 
         <ProgressBar
+            android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Login_btn"
+            android:layout_below="@+id/register_btn"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Login_btn"
+            android:layout_below="@+id/register_btn"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="70dp"
             android:orientation="horizontal">
@@ -176,18 +178,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Don't have an account?"
+                android:text="Have an account?"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/Signup_tv"
+                android:id="@+id/signin_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
                 android:text="SignIn"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </RelativeLayout>

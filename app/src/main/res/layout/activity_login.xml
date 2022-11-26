@@ -45,7 +45,7 @@
             android:textSize="18sp"
             android:textColor="@color/black"/>
             <EditText
-                android:id="@+id/email_et"
+                android:id="@+id/email_et_login"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -70,7 +70,7 @@
                 android:textSize="18sp"
                 android:textColor="@color/black"/>
             <EditText
-                android:id="@+id/password_et"
+                android:id="@+id/password_et_login"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:background="null"
@@ -78,7 +78,7 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/Login_btn"
+            android:id="@+id/login_btn"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/password_card"
@@ -90,14 +90,15 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Login_btn"
+            android:layout_below="@+id/login_btn"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"/>
+            android:visibility="invisible"
+            android:layout_marginTop="20dp" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Login_btn"
+            android:layout_below="@+id/login_btn"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
             android:orientation="horizontal">
@@ -110,13 +111,13 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/Signup_tv"
-                android:paddingStart="5dp"
+                android:id="@+id/signup_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="5dp"
                 android:text="SignUp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textStyle="bold" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </RelativeLayout>
