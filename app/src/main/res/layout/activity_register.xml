@@ -159,7 +159,7 @@
             android:text="Register" />
 
         <ProgressBar
-            android:id="@+id/progress_bar"
+            android:id="@+id/register_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/register_btn"

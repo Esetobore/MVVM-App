@@ -61,6 +61,9 @@ dependencies {
     // Architectural Components
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
+    //Circular profile Image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     //Firebase
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'

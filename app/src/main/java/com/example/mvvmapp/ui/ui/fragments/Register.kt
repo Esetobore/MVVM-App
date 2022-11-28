@@ -1,71 +1,100 @@
 package com.example.mvvmapp.ui.ui.fragments
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mvvmapp.R
 import com.example.mvvmapp.ui.MainActivity
 import com.example.mvvmapp.ui.User
+import com.example.mvvmapp.ui.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_register.*
+
 
 class Register : AppCompatActivity() {
     private var auth : FirebaseAuth = FirebaseAuth.getInstance()
     private lateinit var db: DatabaseReference
+    private lateinit var storage: StorageReference
     private val email = email_et.text.toString()
     private val pass = password_et.text.toString()
     private val firstname = FN_et.text.toString()
     private val lastname = LN_et.text.toString()
+    lateinit var imageUri: Uri
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        val uid = auth.currentUser?.uid
         register_btn.setOnClickListener {
             registerUser()
         }
         signin_tv.setOnClickListener {
             onBackPressed()
         }
+        profile_btn.setOnClickListener {
+            profileImage()
+        }
 
     }
     private fun registerUser(){
-
+        uploadImage()
+        register_progress_bar.visibility = View.VISIBLE
         if (email.isEmpty()){
-            toast("please enter email")
+            Constants.Utils.showToast(this,"Please enter email")
         }
         if (pass.isEmpty()){
-            toast("please enter password")
+            Constants.Utils.showToast(this,"Please enter password")
         }
         if (firstname.isEmpty()){
-            toast("please enter name")
+            Constants.Utils.showToast(this,"Please enter First Name")
         }
         if(lastname.isEmpty()){
-            toast("please enter last name")
+            Constants.Utils.showToast(this,"Please enter Last Name")
         }
 
         auth.createUserWithEmailAndPassword(email,pass)
             .addOnCompleteListener { task->
             if (task.isSuccessful){
+                register_progress_bar.visibility = View.GONE
                 userInfo()
-                toast("Registration Successful")
+                Constants.Utils.showToast(this, "Registration Successful")
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }
         }.addOnFailureListener {
-                progress_bar.visibility = View.GONE
-                toast("Error: $it")
+                register_progress_bar.visibility = View.GONE
+                Constants.Utils.showToast(this,"Error: $it")
         }
     }
-    private fun toast(m:String){
-        Toast.makeText(this, m, Toast.LENGTH_LONG).show()
-    }
+
 
     private fun userInfo(){
         db = FirebaseDatabase.getInstance().getReference("Users")
-        val user = User(firstname, lastname)
-        db.child(firstname).setValue(user)
+        val user = User(firstname, lastname, email)
+        db.child(lastname).setValue(user)
     }
+    private fun uploadImage(){
+        storage = FirebaseStorage.getInstance().getReference("UserImg/"+auth.currentUser?.uid+".jpg")
+        storage.putFile(imageUri)
+    }
+    private fun profileImage(){
+        val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+        startActivityForResult(gallery, 100)
+
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100 && resultCode == RESULT_OK){
+            imageUri = data?.data!!
+        }
+    }
+
 }

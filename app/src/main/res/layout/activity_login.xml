@@ -88,12 +88,13 @@
             android:text="Login" />
 
         <ProgressBar
+            android:id="@+id/login_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/login_btn"
             android:layout_centerHorizontal="true"
-            android:visibility="invisible"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:visibility="invisible" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"

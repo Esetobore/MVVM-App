@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.mvvmapp.R
 import com.example.mvvmapp.ui.MainActivity
+import com.example.mvvmapp.ui.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
@@ -30,25 +31,25 @@ class Login : AppCompatActivity() {
     private fun loginUser(){
         val email = email_et_login.text.toString()
         val pass = password_et_login.text.toString()
+        login_progress_bar.visibility = View.VISIBLE
         if (email.isEmpty()){
-            toast("please enter email")
+            Constants.Utils.showToast(this, "Please enter email")
         }
         if (pass.isEmpty()){
-            toast("please enter password")
+            Constants.Utils.showToast(this, "Please enter password")
         }
-        auth.createUserWithEmailAndPassword(email,pass)
+        if (email.isEmpty() && pass.isEmpty()){
+            Constants.Utils.showToast(this, "Please Fill the fields")
+        }
+        auth.signInWithEmailAndPassword(email,pass)
             .addOnCompleteListener { task->
                 if (task.isSuccessful){
-                    toast("Registration Successful")
+                    Constants.Utils.showToast(this, "Registration Successful")
                 }
             }.addOnFailureListener {
-                progress_bar.visibility = View.GONE
-                toast("Error: $it")
+                login_progress_bar.visibility = View.GONE
+                Constants.Utils.showToast(this,"Error: $it")
             }
-    }
-
-    private fun toast(m:String){
-        Toast.makeText(this, m, Toast.LENGTH_LONG).show()
     }
 
 }
