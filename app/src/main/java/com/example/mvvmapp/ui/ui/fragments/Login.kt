@@ -26,6 +26,9 @@ class Login : AppCompatActivity() {
         signup_tv.setOnClickListener {
             startActivity(Intent(this, Register::class.java))
         }
+        reset_txt.setOnClickListener {
+            startActivity(Intent(this, ForgottenPassword::class.java))
+        }
 
     }
     private fun loginUser(){

@@ -12,7 +12,7 @@ class Constants {
     }
     object Utils {
         fun showToast(mContext: Context?, message: String?) {
-            Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+            Toast.makeText(mContext, message, Toast.LENGTH_LONG).show()
         }
     }
 }
