@@ -4,13 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.example.mvvmapp.R
 import com.example.mvvmapp.ui.MainActivity
 import com.example.mvvmapp.ui.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_register.*
 
 class Login : AppCompatActivity() {
     private var auth : FirebaseAuth = FirebaseAuth.getInstance()

@@ -5,8 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mvvmapp.R
 import com.example.mvvmapp.ui.MainActivity
@@ -22,17 +20,17 @@ import kotlinx.android.synthetic.main.activity_register.*
 
 class Register : AppCompatActivity() {
     private var auth : FirebaseAuth = FirebaseAuth.getInstance()
-    private lateinit var db: DatabaseReference
-    private lateinit var storage: StorageReference
+    private lateinit var databaseReference: DatabaseReference
+    private lateinit var storageReference: StorageReference
     private val email = email_et.text.toString()
     private val pass = password_et.text.toString()
     private val firstname = FN_et.text.toString()
     private val lastname = LN_et.text.toString()
     lateinit var imageUri: Uri
+    val Uid = auth.currentUser?.uid
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        val uid = auth.currentUser?.uid
         register_btn.setOnClickListener {
             registerUser()
         }
@@ -77,13 +75,13 @@ class Register : AppCompatActivity() {
 
 
     private fun userInfo(){
-        db = FirebaseDatabase.getInstance().getReference("Users")
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users")
         val user = User(firstname, lastname, email)
-        db.child(lastname).setValue(user)
+        databaseReference.child(lastname).setValue(user)
     }
     private fun uploadImage(){
-        storage = FirebaseStorage.getInstance().getReference("UserImg/"+auth.currentUser?.uid+".jpg")
-        storage.putFile(imageUri)
+        storageReference = FirebaseStorage.getInstance().getReference("UserImg/"+auth.currentUser?.uid+".jpg")
+        storageReference.putFile(imageUri)
     }
     private fun profileImage(){
         val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)

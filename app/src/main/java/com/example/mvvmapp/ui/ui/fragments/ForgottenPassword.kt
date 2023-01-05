@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import com.example.mvvmapp.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.core.Constants
 import kotlinx.android.synthetic.main.activity_forgotten_password.*
 
 class ForgottenPassword : AppCompatActivity() {
@@ -18,7 +17,6 @@ class ForgottenPassword : AppCompatActivity() {
 
         reset_btn.setOnClickListener{
             resetPass()
-            startActivity(Intent(this,Login::class.java))
         }
     }
     private fun resetPass(){
@@ -31,6 +29,7 @@ class ForgottenPassword : AppCompatActivity() {
             .addOnSuccessListener {
                 reset_progress_bar.visibility = View.GONE
                 com.example.mvvmapp.ui.utils.Constants.Utils.showToast(this, "Check Registered email for Reset Email")
+                startActivity(Intent(this,Login::class.java))
             }
             .addOnFailureListener {
                 com.example.mvvmapp.ui.utils.Constants.Utils.showToast(this,"Error: $it")
